@@ -1,12 +1,12 @@
 //variáveis da bolinha
-let xBall = 300;
-let yBall = 200;
+let xBola = 300;
+let yBola = 200;
 let diametro = 18;
 let raio = diametro /2;
 
 //velocidade da bolinha
-let velocidadeXBall = 6;
-let velocidadeYBall = 6;
+let velocidadeXBola = 5;
+let velocidadeYBola = 5;
 
 //variáveis da raquete
 let xRaquete = 5;
@@ -28,53 +28,51 @@ function draw() {
   verificaColisaoBorda();
   mostraRaquete();
   movimentaRaquete();
-
+  verificaColisaoRaquete();
   
   
   function mostraBolinha() {
-    
-    circle(xBall, yBall, diametro);
-    
+    circle(xBola, yBola, diametro);
   }
+  
   
   function movimentaBolinha() {
-    
-    xBall += velocidadeXBall;
-    yBall += velocidadeYBall;
-    
+    xBola += velocidadeXBola;
+    yBola += velocidadeYBola;
   }
   
+  
   function verificaColisaoBorda() {
-    
-    if (xBall + raio > width || xBall - raio < 0) {
-    
-    velocidadeXBall *= -1;
-    
+    if (xBola + raio > width || xBola - raio < 0) {
+    velocidadeXBola *= -1;
     }
-    
-    if(yBall + raio > height || yBall - raio < 0){
-      velocidadeYBall *= -1;
+    if(yBola + raio > height || yBola - raio < 0){
+      velocidadeYBola *= -1;
     }
   }
     
+  
+  
   function mostraRaquete() {
-    
       rect(xRaquete, yRaquete, comprimento, altura);
-    
   }
   
   function movimentaRaquete() {
-    
     if(keyIsDown(UP_ARROW)){
-      
     yRaquete -= 10;
-      
     }
      if(keyIsDown(DOWN_ARROW)){
-      
     yRaquete += 10;
-      
     }
+  }
+  
+  
+  function verificaColisaoRaquete(){
+    
+    if(xBola - raio < xRaquete + comprimento && yBola - raio < yRaquete + altura && yBola + raio > yRaquete){
+      velocidadeXBola *= -1;
+    }
+    
   }
     
   
