@@ -13,6 +13,7 @@ let xRaquete = 2;
 let yRaquete = 150;
 let comprimento = 10;
 let altura = 90;
+
 let colisao = false;
 
 //variáveis do oponente
@@ -20,6 +21,9 @@ let xRaqueteOponente = 585;
 let yRaqueteOponente = 150;
 let velocidadeYOponente;
 
+//placar do jogo
+let pontos = 0;
+let pontosOponente = 0;
 
 
 function setup() {
@@ -39,6 +43,8 @@ function draw() {
   verificaColisaoRaquete(xRaqueteOponente, yRaqueteOponente);
   mostraRaquete(xRaqueteOponente, yRaqueteOponente);
   movimentaRaqueteOponente();
+  incluiPlacar();
+  marcaPonto();
   
   function mostraBolinha() {
     circle(xBola, yBola, diametro);
@@ -102,8 +108,21 @@ function draw() {
     yRaqueteOponente += velocidadeYOponente;
   }
   
-  
+  function incluiPlacar(){
     
-  
+    fill(255)
+    text(pontos, 278, 26)
+    text(pontosOponente, 321, 26)
+  }
+    
+  function marcaPonto(){
+    if (xBola > 590){
+      pontos += 1;
+    }
+    if (xBola < 10) {
+      pontosOponente += 1;
+    }
+    
+  }
   
 }
