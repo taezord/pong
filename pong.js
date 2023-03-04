@@ -31,11 +31,11 @@ function draw() {
   mostraBolinha();
   movimentaBolinha();
   verificaColisaoBorda();
-  mostraRaquete();
+  mostraRaquete(xRaquete, yRaquete);
   movimentaRaquete();
   //verificaColisaoRaquete();
   colisaoMinhaRaqueteBiblioteca();
-  mostraRaqueteOponente();
+  mostraRaquete(xRaqueteOponente, yRaqueteOponente);
   
   function mostraBolinha() {
     circle(xBola, yBola, diametro);
@@ -59,14 +59,11 @@ function draw() {
     
   
   
-  function mostraRaquete() {
-      rect(xRaquete, yRaquete, comprimento, altura);
+  function mostraRaquete(x, y) {
+      rect(x, y, comprimento, altura);
   }
   
-  function mostraRaqueteOponente() {
-      rect(xRaqueteOponente, yRaqueteOponente, comprimento, altura);
-  }
-  
+
   
   function movimentaRaquete() {
     if(keyIsDown(UP_ARROW)){
