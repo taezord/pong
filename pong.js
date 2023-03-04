@@ -18,6 +18,7 @@ let colisao = false;
 //variáveis do oponente
 let xRaqueteOponente = 585;
 let yRaqueteOponente = 150;
+let velocidadeYOponente;
 
 
 
@@ -36,6 +37,7 @@ function draw() {
   //verificaColisaoRaquete();
   colisaoMinhaRaqueteBiblioteca();
   mostraRaquete(xRaqueteOponente, yRaqueteOponente);
+  movimentaRaqueteOponente();
   
   function mostraBolinha() {
     circle(xBola, yBola, diametro);
@@ -91,6 +93,13 @@ function draw() {
     }
     
   }
+  
+  function movimentaRaqueteOponente(){
+    velocidadeYOponente = yBola - yRaqueteOponente - comprimento /2 - 30;
+    yRaqueteOponente += velocidadeYOponente;
+  }
+  
+  
     
   
   
