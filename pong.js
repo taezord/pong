@@ -9,11 +9,16 @@ let velocidadeXBola = 3;
 let velocidadeYBola = 3;
 
 //variáveis da raquete
-let xRaquete = 5;
+let xRaquete = 3;
 let yRaquete = 150;
-let comprimento = 10;
+let comprimento = 12;
 let altura = 90;
 let colisao = false;
+
+//variáveis do oponente
+let xRaqueteOponente = 585;
+let yRaqueteOponente = 150;
+
 
 
 function setup() {
@@ -30,6 +35,7 @@ function draw() {
   movimentaRaquete();
   //verificaColisaoRaquete();
   colisaoMinhaRaqueteBiblioteca();
+  mostraRaqueteOponente();
   
   function mostraBolinha() {
     circle(xBola, yBola, diametro);
@@ -56,6 +62,11 @@ function draw() {
   function mostraRaquete() {
       rect(xRaquete, yRaquete, comprimento, altura);
   }
+  
+  function mostraRaqueteOponente() {
+      rect(xRaqueteOponente, yRaqueteOponente, comprimento, altura);
+  }
+  
   
   function movimentaRaquete() {
     if(keyIsDown(UP_ARROW)){
