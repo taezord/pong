@@ -1,12 +1,12 @@
 //variáveis da bolinha
 let xBola = 300;
 let yBola = 200;
-let diametro = 13;
+let diametro = 16;
 let raio = diametro /2;
 
 //velocidade da bolinha
-let velocidadeXBola = 6;
-let velocidadeYBola = 6;
+let velocidadeXBola = 5;
+let velocidadeYBola = 5;
 
 //variáveis da raquete
 let xRaquete = 2;
@@ -25,9 +25,21 @@ let velocidadeYOponente;
 let pontos = 0;
 let pontosOponente = 0;
 
+//sons do jogo
+let raquetada;
+let ponto;
+let trilha;
+
+function preload() {
+   trilha = loadSound("trilha.mp3");
+   ponto = loadSound("ponto.mp3");
+   raquetada = loadSound("raquetada.mp3");
+}
+
 
 function setup() {
   createCanvas(600, 400);
+  trilha.loop();
 }
 
 
@@ -45,6 +57,8 @@ function draw() {
   movimentaRaqueteOponente();
   incluiPlacar();
   marcaPonto();
+  bolaNaoFicaPresa();
+  
   
   function mostraBolinha() {
     circle(xBola, yBola, diametro);
@@ -88,6 +102,7 @@ function draw() {
     
     if(xBola - raio < xRaquete + comprimento && yBola - raio < yRaquete + altura && yBola + raio > yRaquete){
       velocidadeXBola *= -1;
+      raquetada.play();
     }
     
   }
@@ -97,6 +112,7 @@ function draw() {
     
     if(colisao){
       velocidadeXBola *= -1;
+      raquetada.play();
     }
     
   }
@@ -129,11 +145,22 @@ function draw() {
   function marcaPonto(){
     if (xBola > 590){
       pontos += 1;
+      ponto.play();
     }
     if (xBola < 10) {
       pontosOponente += 1;
+      ponto.play();
     }
     
   }
+  
+  
+  function bolaNaoFicaPresa(){
+    if (xBola - raio < 0){
+    xBola = 23
+    }
+}
+
+
   
 }
